@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import Peer from 'skyway-js'
-import { liff } from '@line/liff'
+import liff from '@line/liff'
 
 const peer = new Peer({ key: process.env.REACT_APP_SKYWAY_KEY ?? '' })
 
