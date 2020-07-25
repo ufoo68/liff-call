@@ -33,7 +33,6 @@ export const Caller = () => {
 
     peer.on('open', () => {
       setMyId(peer.id)
-      console.log(myId)
       navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(localStream => {
         if (localStream) {
           localVideo!.current!.srcObject = localStream
@@ -66,7 +65,7 @@ export const Caller = () => {
     <div className={classes.root}>
       <div className={classes.camera}>
         <video className={classes.localVideo} autoPlay muted playsInline ref={localVideo} />
-        <video className={classes.remoteVideo} autoPlay muted playsInline ref={remoteVideo} />
+        <video className={classes.remoteVideo} autoPlay playsInline ref={remoteVideo} />
       </div>
       <div>
         {loggedIn ?
