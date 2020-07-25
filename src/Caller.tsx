@@ -79,7 +79,7 @@ export const Caller = () => {
           </Button> :
         <Button variant="contained" color="primary" onClick={login}>
           loginしてください
-          </Button>
+        </Button>
       }
     </div>
   )
