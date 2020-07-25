@@ -63,7 +63,7 @@ export const Callee = (props: Props) => {
         <video className={classes.remoteVideo} autoPlay muted playsInline ref={remoteVideo} />
       </div>
       <div>
-        <button onClick={answerCall}>Callに出る</button>
+        <button onClick={answerCall} disabled={!remoteVideo}>Callに出る</button>
       </div>
     </div>
   )

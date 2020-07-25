@@ -33,6 +33,7 @@ export const Caller = () => {
 
     peer.on('open', () => {
       setMyId(peer.id)
+      console.log(myId)
       navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(localStream => {
         if (localStream) {
           localVideo!.current!.srcObject = localStream
@@ -69,7 +70,7 @@ export const Caller = () => {
       </div>
       <div>
         {loggedIn ?
-          <button onClick={makeCall}>Callする</button> :
+          <button onClick={makeCall} disabled={!remoteVideo}>Callする</button> :
           <button onClick={login}>login</button>
         }
       </div>
