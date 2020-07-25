@@ -39,15 +39,6 @@ export const Callee = (props: Props) => {
         }
       })
     })
-
-    peer.on('call', mediaConnection => {
-      mediaConnection.answer(localVideo!.current!.srcObject as MediaStream)
-
-      mediaConnection.on('stream', async stream => {
-        remoteVideo!.current!.srcObject = stream
-        setCalled(true)
-      })
-    })
   }, [])
 
   const answerCall = () => {
@@ -56,6 +47,7 @@ export const Callee = (props: Props) => {
     mediaConnection.on('stream', async stream => {
       remoteVideo!.current!.srcObject = stream
       await remoteVideo!.current!.play().catch(console.error)
+      setCalled(true)
     })
   }
   return (
