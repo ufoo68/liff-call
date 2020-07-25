@@ -1,11 +1,23 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App'
+import { Caller } from './Caller'
+import { Callee } from './Callee'
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom'
+import queryString from 'query-string'
 import * as serviceWorker from './serviceWorker'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Caller} />
+        <Route path="/callee" render={(props) => <Callee qs={queryString.parse(props.location.search)} />} />
+      </Switch>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 )
