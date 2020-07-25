@@ -53,7 +53,7 @@ export const Caller = () => {
     await liff.init({ liffId: process.env.REACT_APP_LIFF_ID ?? '' })
     await liff.shareTargetPicker([{
       type: 'text',
-      text: `https://liff.line.me/1654498155-KR7YzLM2/callee?id=${myId}`,
+      text: `https://liff-call.vercel.app/callee?id=${myId}`,
     }])
   }
 
