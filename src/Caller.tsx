@@ -13,7 +13,7 @@ const useStyles = makeStyles({
     position: 'relative',
   },
   localVideo: {
-    width: '10vw',
+    width: '20vw',
     margin: 5,
     position: 'absolute',
   },

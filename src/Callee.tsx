@@ -13,12 +13,12 @@ const useStyles = makeStyles({
     position: 'relative',
   },
   localVideo: {
-    width: 100,
+    width: '20vw',
     position: 'absolute',
     margin: 5,
   },
   remoteVideo: {
-    width: 600,
+    width: '70vw',
     border: 'solid',
   }
 })
