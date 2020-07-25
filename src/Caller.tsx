@@ -24,6 +24,7 @@ const peer = new Peer({ key: process.env.REACT_APP_SKYWAY_KEY ?? '' })
 export const Caller = () => {
   const [myId, setMyId] = useState<string>('')
   const [loggedIn, setLoggedIn] = useState<boolean>(false)
+  const [called, setCalled] = useState<boolean>(false)
   const localVideo = useRef<HTMLVideoElement>(null)
   const remoteVideo = useRef<HTMLVideoElement>(null)
   const classes = useStyles()
@@ -45,6 +46,7 @@ export const Caller = () => {
 
       mediaConnection.on('stream', async stream => {
         remoteVideo!.current!.srcObject = stream
+        setCalled(true)
       })
     })
   }, [])
@@ -69,7 +71,7 @@ export const Caller = () => {
       </div>
       <div>
         {loggedIn ?
-          <button onClick={makeCall} disabled={!remoteVideo}>Callする</button> :
+          <button onClick={makeCall} disabled={called}>Callする</button> :
           <button onClick={login}>login</button>
         }
       </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Peer from 'skyway-js'
 import { ParsedQuery } from 'query-string'
 import { makeStyles } from '@material-ui/core/styles'
@@ -26,6 +26,7 @@ interface Props {
 }
 
 export const Callee = (props: Props) => {
+  const [called, setCalled] = useState<boolean>(false)
   const localVideo = useRef<HTMLVideoElement>(null)
   const remoteVideo = useRef<HTMLVideoElement>(null)
   const classes = useStyles()
@@ -44,6 +45,7 @@ export const Callee = (props: Props) => {
 
       mediaConnection.on('stream', async stream => {
         remoteVideo!.current!.srcObject = stream
+        setCalled(true)
       })
     })
   }, [])
@@ -63,7 +65,7 @@ export const Callee = (props: Props) => {
         <video className={classes.remoteVideo} autoPlay playsInline ref={remoteVideo} />
       </div>
       <div>
-        <button onClick={answerCall} disabled={!remoteVideo}>Callに出る</button>
+        <button onClick={answerCall} disabled={called}>Callに出る</button>
       </div>
     </div>
   )
