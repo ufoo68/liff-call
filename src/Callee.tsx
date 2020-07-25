@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import Peer from 'skyway-js'
 import { ParsedQuery } from 'query-string'
 import { makeStyles } from '@material-ui/core/styles'
+import { Button } from '@material-ui/core'
+import { Call } from '@material-ui/icons'
 
 const useStyles = makeStyles({
   root: {
@@ -13,9 +15,11 @@ const useStyles = makeStyles({
   localVideo: {
     width: 100,
     position: 'absolute',
+    margin: 5,
   },
   remoteVideo: {
     width: 600,
+    border: 'solid',
   }
 })
 
@@ -56,9 +60,9 @@ export const Callee = (props: Props) => {
         <video className={classes.localVideo} autoPlay muted playsInline ref={localVideo} />
         <video className={classes.remoteVideo} autoPlay playsInline ref={remoteVideo} />
       </div>
-      <div>
-        <button onClick={answerCall} disabled={called}>Callに出る</button>
-      </div>
+      <Button variant="contained" color="default" startIcon={<Call />} onClick={answerCall} disabled={called}>
+        callに出る
+      </Button>
     </div>
   )
 }

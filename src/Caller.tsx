@@ -2,6 +2,8 @@ import React, { useEffect, useState, useRef } from 'react'
 import Peer from 'skyway-js'
 import liff from '@line/liff'
 import { makeStyles } from '@material-ui/core/styles'
+import { Button } from '@material-ui/core'
+import { Call } from '@material-ui/icons'
 
 const useStyles = makeStyles({
   root: {
@@ -11,11 +13,13 @@ const useStyles = makeStyles({
     position: 'relative',
   },
   localVideo: {
-    width: 100,
+    width: '10vw',
+    margin: 5,
     position: 'absolute',
   },
   remoteVideo: {
-    width: 600,
+    width: '70vw',
+    border: 'solid',
   }
 })
 
@@ -69,13 +73,14 @@ export const Caller = () => {
         <video className={classes.localVideo} autoPlay muted playsInline ref={localVideo} />
         <video className={classes.remoteVideo} autoPlay playsInline ref={remoteVideo} />
       </div>
-      <div>
-        {loggedIn ?
-          <button onClick={makeCall} disabled={called}>Callする</button> :
-          <button onClick={login}>login</button>
-        }
-      </div>
-      <div></div>
+      {loggedIn ?
+        <Button variant="contained" color="default" startIcon={<Call />} onClick={makeCall} disabled={called}>
+          callする
+          </Button> :
+        <Button variant="contained" color="primary" onClick={login}>
+          loginしてください
+          </Button>
+      }
     </div>
   )
 }
