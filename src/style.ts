@@ -10,8 +10,8 @@ export const useStyles = makeStyles({
   localVideo: {
     position: 'absolute',
     width: '15vw',
-    left: 150,
-    bottom: 30,
+    left: 0,
+    bottom: 0,
     
   },
   remoteVideo: {
